@@ -37,26 +37,20 @@ with open(budget_data_csv, newline='') as csvfile:
 	# Check max and min increase to compare for testing
 	maxIncrease = max(profits)
 	minDecrease = min(profits)
-	#print(maxIncrease)
-	#print(minDecrease)
 	
 	# Use one-line function to get the max of the second index value
 	maxMonth = max(budget_list, key=lambda x: x[1])
-	#print(maxMonth)
+
 	# Use one-line function to get the min of the second index value
 	minMonth = min(budget_list, key=lambda x: x[1])
-	#print(minMonth)
-	
-	print(*maxMonth[0], maxMonth[1], sep="")
-	print(''.join(str(maxMonth)))
 		
 #
 # Main block to print out results
 print("Financial Analysis")
 print("----------------------------")
-print("Total Months: " + str(totalMonths))					# Use string on variable, concatenate with text
+print(f"Total Months: {totalMonths}")					# Use string on variable, concatenate with text
 print(f"Total: $ {total}")									# Use f-string to simplify with total
 print(f"Average Change: $ {avgChange}")						# Use f-string again for average change
-print("Greatest Increase in Profits: " + str(maxMonth))		#
-print("Greatest Decrease in Profits: " + str(minMonth))		#
+print("Greatest Increase in Profits: " + maxMonth[0] + " ($" + str(maxMonth[1]) + ")")		#
+print("Greatest Decrease in Profits: " + minMonth[0] + " ($" + str(minMonth[1]) + ")")		#
 
