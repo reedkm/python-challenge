@@ -32,8 +32,8 @@ with open(budget_data_csv, newline='') as csvfile:
 	total = sum(profits) 
 
 	# Average the profits using the total divided by total months, rounded to 2 places
-	avgChange = round(total/totalMonths, 2) 
-
+	avgChange = round(total/totalMonths, 2)
+	
 	# Check max and min increase to compare for testing
 	maxIncrease = max(profits)
 	minDecrease = min(profits) 
@@ -53,10 +53,10 @@ print("----------------------------")
 print(f"Total Months: {totalMonths}")
 
 # Use f-string to simplify with total
-print(f"Total: $ {total}")
+print(f"Total: ${total}")
 
 # Use f-string again for average change
-print(f"Average Change: $ {avgChange}")
+print(f"Average Change: ${avgChange}")
 
 # Use f-string again for increase; pull out indexes of variable to display as needed
 print(f"Greatest Increase in Profits: {maxMonth[0]} (${maxMonth[1]})")
