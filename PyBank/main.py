@@ -4,6 +4,7 @@
 
 import os
 import csv
+import numpy as np
 
 # Use os library to point to csv files
 budget_data_csv = os.path.join("Resources", "budget_data.csv")
@@ -30,6 +31,18 @@ with open(budget_data_csv, newline='') as csvfile:
 
 	# Sum the rows for total profit
 	total = sum(profits) 
+	
+	############## ADD BLOCK FOR AVERAGE CHANGE
+	new_l = np.diff(profits)
+	print(new_l)
+	totalChange = sum(new_l)
+	print(totalChange)
+	changeMonths = len(new_l) 
+	print(changeMonths)
+	averageChange = round(totalChange/changeMonths, 2)
+	print(averageChange)
+	###############
+	
 
 	# Average the profits using the total divided by total months, rounded to 2 places
 	avgChange = round(total/totalMonths, 2)
