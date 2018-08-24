@@ -32,24 +32,26 @@ with open(budget_data_csv, newline='') as csvfile:
 	# Sum the rows for total profit
 	total = sum(profits) 
 	
-	############## ADD BLOCK FOR AVERAGE CHANGE
-	new_l = np.diff(profits)
-	print(new_l)
-	totalChange = sum(new_l)
+	# Added new code to find average change using numpy; 
+	# numpy.diff calculates difference between profit elements
+	monthlyChange = np.diff(profits)
+	print(monthlyChange)
+	
+	# Total the monthly change
+	totalChange = sum(monthlyChange)
 	print(totalChange)
-	changeMonths = len(new_l) 
+	
+	# Calculate the number of monthly change items
+	changeMonths = len(monthlyChange) 
 	print(changeMonths)
+	
+	# Calculate the average of monthly change, rounded to 2 places
 	averageChange = round(totalChange/changeMonths, 2)
 	print(averageChange)
-	###############
-	
-
-	# Average the profits using the total divided by total months, rounded to 2 places
-	avgChange = round(total/totalMonths, 2)
 	
 	# Check max and min increase to compare for testing
-	maxIncrease = max(profits)
-	minDecrease = min(profits) 
+	#maxIncrease = max(profits)
+	#minDecrease = min(profits) 
 
 	# Use one-line function to get the max of the second index value
 	maxMonth = max(budget_list, key=lambda x: x[1])
@@ -57,7 +59,6 @@ with open(budget_data_csv, newline='') as csvfile:
 	# Use one-line function to get the min of the second index value
 	minMonth = min(budget_list, key=lambda x: x[1])
 	 
-#
 # Main block to print out results
 print("Financial Analysis")
 print("----------------------------")
@@ -69,7 +70,7 @@ print(f"Total Months: {totalMonths}")
 print(f"Total: ${total}")
 
 # Use f-string again for average change
-print(f"Average Change: ${avgChange}")
+print(f"Average Change: ${averageChange}")
 
 # Use f-string again for increase; pull out indexes of variable to display as needed
 print(f"Greatest Increase in Profits: {maxMonth[0]} (${maxMonth[1]})")
