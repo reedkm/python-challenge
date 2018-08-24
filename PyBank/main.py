@@ -35,19 +35,19 @@ with open(budget_data_csv, newline='') as csvfile:
 	# Added new code to find average change using numpy; 
 	# numpy.diff calculates difference between profit elements
 	monthlyChange = np.diff(profits)
-	print(monthlyChange)
+	#print(monthlyChange)
 	
 	# Total the monthly change
 	totalChange = sum(monthlyChange)
-	print(totalChange)
+	#print(totalChange)
 	
 	# Calculate the number of monthly change items
 	changeMonths = len(monthlyChange) 
-	print(changeMonths)
+	#print(changeMonths)
 	
 	# Calculate the average of monthly change, rounded to 2 places
 	averageChange = round(totalChange/changeMonths, 2)
-	print(averageChange)
+	#print(averageChange)
 	
 	# Check max and min increase to compare for testing
 	#maxIncrease = max(profits)
