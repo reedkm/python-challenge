@@ -4,7 +4,6 @@
 
 import os
 import csv
-import numpy as np
 
 # Use os library to point to csv files
 poll_data_csv = os.path.join("Resources", "election_data.csv")
@@ -49,7 +48,7 @@ with open(poll_data_csv, newline='') as csvfile:
 
 	# intilize a null list
 		unique_list = []
-	
+
 		# traverse for all elements
 		for x in list:
 			# check if exists in unique_list or not
@@ -59,33 +58,42 @@ with open(poll_data_csv, newline='') as csvfile:
 		#for x in unique_list:
 			#print(x),
 		#print(unique_list)
-		
+
+		summary = []
+		sumB = []
 		for item in unique_list:
-			summary = []
-		
 			CandidateVotes = []
+			summary.append(item)
 			# Loop through looking for the votes
 			for row in votes:
 				if row[2] == item:
 					CandidateVotes.append(1)
 			totalCVotes = len(CandidateVotes)
-			percentage = round(totalCVotes/totalVotes * 100,3)
+			percentage = round(totalCVotes/totalVotes * 100, 3)
 
 			
 			print(f"{item}: {percentage}% ({totalCVotes})")
+			sumB.append(totalCVotes)
 
 			file.write(f"{item}: {percentage}% ({totalCVotes})\n")
 
-		print(summary)
-		
+		#print(summary)
+		zipped = zip(summary, sumB)
+		#map(max, zip(zipped))
+
+		#print(max(sumB))
+		for name, number in zipped:
+			if number == max(sumB):
+				winner = name
+		print("----------------------------")
+		print(f"Winner: {winner}")
+		print("----------------------------")
+
+		file.write("----------------------------\n")
+		file.write(f"Winner: {winner}\n")
+		file.write("----------------------------\n")
+
+		file.close()
+
 	list = candidates
 	unique(list)
-	
-	file.write("----------------------------\n")
-	
-	print("----------------------------")
-	print(f"Winner: ")
-	print("----------------------------")
-
-
-file.close()
