@@ -34,6 +34,16 @@ with open(poll_data_csv, newline='') as csvfile:
 	print(f"Total Votes: {totalVotes}")
 	print("----------------------------")
 	
+
+	# save the output file path
+	output_file = os.path.join("output.txt")
+	file = open(output_file, "w")
+	
+	file.write("Election Results\n")
+	file.write("----------------------------\n")
+	file.write(f"Total Votes: {totalVotes}\n")
+	file.write("----------------------------\n")
+	
 	# Function code for unique values from web
 	def unique(list):
 
@@ -51,6 +61,7 @@ with open(poll_data_csv, newline='') as csvfile:
 		#print(unique_list)
 		
 		for item in unique_list:
+			summary = []
 		
 			CandidateVotes = []
 			# Loop through looking for the votes
@@ -59,24 +70,22 @@ with open(poll_data_csv, newline='') as csvfile:
 					CandidateVotes.append(1)
 			totalCVotes = len(CandidateVotes)
 			percentage = round(totalCVotes/totalVotes * 100,3)
+
 			
-			print(f"{item}: {percentage}% ({totalCVotes})")		
+			print(f"{item}: {percentage}% ({totalCVotes})")
+
+			file.write(f"{item}: {percentage}% ({totalCVotes})\n")
+
+		print(summary)
 		
 	list = candidates
 	unique(list)
+	
+	file.write("----------------------------\n")
 	
 	print("----------------------------")
 	print(f"Winner: ")
 	print("----------------------------")
 
-# save the output file path
-#output_file = os.path.join("output.csv")
 
-#with open(output_file, "w", newline="") as datafile:
-	#writer = csv.writer(datafile)
-
-	#writer.writerow(["Voter ID", "County", "Candidate"])
-
-	#writer.writerows(poll_list)
-
-
+file.close()
