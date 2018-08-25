@@ -95,5 +95,5 @@ with open(poll_data_csv, newline='') as csvfile:
 
 		file.close()
 
-	list = candidates
-	unique(list)
+	#list = candidates
+	unique(candidates)
