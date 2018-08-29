@@ -73,10 +73,10 @@ print(f"Total: ${total}")
 print(f"Average Change: ${averageChange}")
 
 # Use f-string again for increase; pull out indexes of variable to display as needed
-print(f"Greatest Increase in Profits: {maxMonth[0]} ({maxIncrease})")
+print(f"Greatest Increase in Profits: {maxMonth[0]} (${maxIncrease})")
 
 # Use f-string again for decrease; pull out indexes of variable to display as needed
-print(f"Greatest Decrease in Profits: {minMonth[0]} ({minDecrease})")
+print(f"Greatest Decrease in Profits: {minMonth[0]} (${minDecrease})")
 
 # Save the output file path
 output_file = os.path.join("financial_analysis.txt")
@@ -88,7 +88,7 @@ file.write("----------------------------\n")
 file.write(f"Total Months: {totalMonths}\n")
 file.write(f"Total: ${total}\n")
 file.write(f"Average Change: ${averageChange}\n")
-file.write(f"Greatest Increase in Profits: {maxMonth[0]} (${maxMonth[1]})\n")
-file.write(f"Greatest Decrease in Profits: {minMonth[0]} (${minMonth[1]})\n")
+file.write(f"Greatest Increase in Profits: {maxMonth[0]} (${maxIncrease})\n")
+file.write(f"Greatest Decrease in Profits: {minMonth[0]} (${minDecrease})\n")
 file.write("----------------------------\n")
 
