@@ -50,8 +50,8 @@ with open(budget_data_csv, newline='') as csvfile:
 	#print(averageChange)
 	
 	# Check max and min increase to compare for testing
-	#maxIncrease = max(profits)
-	#minDecrease = min(profits) 
+	maxIncrease = max(monthlyChange)
+	minDecrease = min(monthlyChange) 
 
 	# Use one-line function to get the max of the second index value
 	maxMonth = max(budget_list, key=lambda x: x[1])
@@ -73,10 +73,10 @@ print(f"Total: ${total}")
 print(f"Average Change: ${averageChange}")
 
 # Use f-string again for increase; pull out indexes of variable to display as needed
-print(f"Greatest Increase in Profits: {maxMonth[0]} (${maxMonth[1]})")
+print(f"Greatest Increase in Profits: {maxMonth[0]} ({maxIncrease})")
 
 # Use f-string again for decrease; pull out indexes of variable to display as needed
-print(f"Greatest Decrease in Profits: {minMonth[0]} (${minMonth[1]})")
+print(f"Greatest Decrease in Profits: {minMonth[0]} ({minDecrease})")
 
 # Save the output file path
 output_file = os.path.join("financial_analysis.txt")
